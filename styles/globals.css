@@ -1,5 +1,56 @@
-:root { --bg: #0b1020; --fg: #eaf0ff; --muted: #a7b1c2; }
-* { box-sizing: border-box; }
-html, body { padding: 0; margin: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
-a { color: #8fd3ff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base */
+:root{
+  --bg: #0b1020;      /* night */
+  --ink: #0e0428;     /* ink */
+  --gold: #d8b34a;    /* gold */
+  --gold2:#8f6d37;    /* gold2 */
+  --smoke:#a2a9c3;    /* smoke */
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body{
+  @apply bg-night text-white antialiased;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Reutilizables */
+.btn-gold{
+  @apply inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold
+         bg-gradient-to-b from-gold to-gold2 text-ink shadow-[0_10px_25px_rgba(0,0,0,.35)]
+         hover:brightness-110 transition;
+}
+.btn-ghost{
+  @apply inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold
+         border border-white/15 text-white hover:bg-white/10 transition;
+}
+.badge{
+  @apply inline-flex items-center gap-2 bg-white/5 border border-white/10
+         text-sm rounded-full px-3 py-1 text-smoke;
+}
+.card{
+  @apply bg-white/5 border border-white/10 rounded-2xl p-5 shadow-[0_10px_25px_rgba(0,0,0,.35)];
+}
+
+.gold-text{
+  background: linear-gradient(180deg, var(--gold), var(--gold2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero overlay sutil */
+.hero-overlay{
+  background: radial-gradient(1200px 600px at 60% -10%, rgba(216,179,74,.25), transparent 60%),
+              radial-gradient(800px 500px at 10% 110%, rgba(162,169,195,.15), transparent 60%);
+}
